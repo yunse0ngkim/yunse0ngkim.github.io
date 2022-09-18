@@ -114,15 +114,15 @@ alt="Before PR" width="450" height="400" /></a>
 ### Before PR
 
 커밋하고 푸쉬로 origin 브랜치에 반영되었는데 또 수정이 필요하다면?  
-커밋을 다시할 필요 없이 마지막 커밋을 `git push -f` 로 덮어 써줍니다.  
+수정 커밋을 origin에 올라간 브랜치에 쌓지 않고(보통 커밋 히스토리 관리하기 때문에 좋아하지 않습니다.) 마지막 커밋을 수정하여 `git push -f` 로 덮어 써줍니다.  
 
-<img src="0022-commit-rollback-update-origin-branch.png" alt="commit-rollback-update-origin-branch.png" width="500">
+<img src="0022-commit-rollback-update-origin-branch.png" alt="commit-rollback-update-origin-branch.png" width="600">
 
 ---
 
 ## PR
 
-fork 한 브랜치(Downstream)를 origin(Upstream)에 머지할 수 있도록 PR 을 작성하는 단계입니다.
+fork 한 브랜치(Downstream)를 origin(Upstream)에 머지할 수 있도록 Pull Request 을 작성하는 단계입니다. Pull Request 는 당김을 요청한다. 즉, 오픈소스 메인테이너에게 내 소스를 잡아 당겨서 넣으라는 의미입니다.
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=wr6dkL0FGPA
 " target="_blank"><img src="http://img.youtube.com/vi/wr6dkL0FGPA/0.jpg" 
@@ -132,7 +132,7 @@ alt="PR" width="600" height="480" /></a>
 
 ## Linux Kernel - Send Patch
 
-소스 최상단의 `MAINTAINERS` 참고하여 github 와 1 ~ 2 와 유사하지만, PR 과 코드 리뷰를 모두 담당자의 메일로 보냅니다.
+소스 최상단의 `MAINTAINERS` 참고하여 github 와 1 ~ 2 와 유사하지만, Pull Request과 코드 리뷰를 모두 담당자의 메일로 보냅니다.
 
 ```bash
 git send-email --smtp-pass="비밀번호" \
@@ -147,6 +147,8 @@ git send-email \
   --cc="linux-kernel@vger.kernel.org, Austin Kim <austindh.kim@gmail.com>"
   --confirm=always -M -1
 ```
+
+---
 
 ### Send Patch(Cont'd)
 
