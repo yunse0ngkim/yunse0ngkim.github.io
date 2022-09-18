@@ -59,708 +59,232 @@
   
 
     <section><h1 id="heading">📽️</h1>
-<h1 id="reveal-hugo">reveal-hugo</h1>
-<p>A Hugo theme for creating Reveal.js presentations.</p>
-<p>~ made by <a href="https://dzello.com/">@dzello</a> ~</p>
+<h3 id="vs-code-너가-있어-편리한-git-덤으로-보는-오픈소스-기여-">VS Code 너가 있어 편리한 Git, 덤으로 보는 오픈소스 기여 🤗</h3>
+<p>10분 안에 살펴보는 VS Code → Github or Mailing 기반 오픈소스 기여하기</p>
+<p>인지기술팀 김윤성</p>
 </section>
 
   
 
-    <section><h2 id="whats-included">What&rsquo;s included?</h2>
+    <section><h2 id="vs-code-를-활용한-git">VS Code 를 활용한 Git</h2>
 <ul>
-<li>All Reveal.js HTML, CSS and JS (v3.9.2)</li>
-<li>All out-of-the-box Reveal.js themes</li>
-<li>Two custom Reveal.js themes (including this one)</li>
-</ul>
-<br>
-<br>
-<p><a href="https://github.com/dzello/reveal-hugo">see the code on github</a></p>
-</section><section>
-<h2 id="features">Features</h2>
+<li>마이크로소프트 윈도우, macOS, 리눅스용으로 개발한 소스 코드 편집기이다.</li>
+<li>Plugin 을 추가하여 풍부한 기능을 가진 IDE 로 사용할 수 있다.</li>
+<li>VS Code 자체적으로 지원하는 Git 기능
 <ul>
-<li>Write slides in Markdown in one or more files</li>
-<li>Shortcodes for fragments, sections, slides &amp; more</li>
-<li>All Reveal.js parameters can be customized</li>
-<li>Any Hugo section can be output as a presentation</li>
-<li>Supports mermaid codeblocks</li>
-<li>Supports offline development or using a CDN</li>
+<li>철권 중급자 수준의 복잡한 커맨드를 기능 버튼으로 함축했습니다.</li>
 </ul>
-</section>
-    <section><h1 id="usage">Usage</h1>
+</li>
+<li>추가적으로 Git 기능 외에도 SSH 또는 Live Share 원격 개발 환경 및 멀티 유저 편집이 가능합니다.</li>
+</ul>
+<img src="0010-git-cheetsheet.png" alt="그림 2 : Git 커맨드 요약본" width=400>
+<img src="0010-vscode-git.png" alt="그림 1 : VS Code 에서 Git" width=400>
 </section><section>
-<h2 id="prerequisite">Prerequisite</h2>
-<p>First, add this to your <code>config.toml</code>:</p>
-<pre><code class="language-toml">[outputFormats.Reveal]
-baseName = &quot;index&quot;
-mediaType = &quot;text/html&quot;
-isHTML = true
-</code></pre>
-</section><section>
-<h3 id="presentation-at-site-root">Presentation at site root</h3>
-<p>Create <code>content/_index.md</code>:</p>
-<pre><code class="language-markdown">+++
-outputs = [&quot;Reveal&quot;]
-+++
-
-# Slide 1
-
-Hello world!
-</code></pre>
-</section><section>
-<h3 id="add-slides">Add slides</h3>
-<p>Separate them by <code>---</code> surrounded by blank lines:</p>
-<pre><code># Slide 1
-
-Hello world!
-
----
-
-# Slide 2
-
-Hello program!
-</code></pre>
-</section><section>
-<h3 id="mermaid">Mermaid</h3>
-<p>Slides can contain <a href="https://mermaid-js.github.io/mermaid/#/">mermaid</a> diagrams:</p>
-<pre><code class="language-code">```mermaid
-graph LR
-    A --&gt; B
-    B --&gt; C
-```
-</code></pre>
-<p>Or (see <a href="#/mermaid-shortcode">mermaid shortcode</a>)</p>
-<pre><code class="language-code">{{&lt; mermaid &gt;}}
-graph LR
-    A --&gt; B
-    B --&gt; C
-{{&lt; /mermaid &gt;}}
-</code></pre>
-<p>results in:</p>
-<div class="mermaid">
-graph LR
-    A --> B
-    B --> C
-
-</div>
-
-
-<p><small>💡 Note: for codeblocks support (<code>```mermaid ...```</code>), hugo highlighting must be on (codeFences = true in config.toml)</small></p>
-</section><section>
-<h3 id="add-slides-with-other-files">Add slides with other files</h3>
-<p>Add slides to <code>content/home/*.md</code></p>
-<pre><code class="language-markdown">+++
-weight = 10
-+++
-
-# Slide 3
-
----
-
-# Slide 4
-</code></pre>
-<p><small>💡 Tip: Use <code>weight</code> to specify the order that files should be considered.</small></p>
-</section><section>
-<h3 id="presentation-at-section">Presentation at &lsquo;/{section}/&rsquo;</h3>
-<p>Add slides to <code>content/{section}/_index.md</code>:</p>
-<pre><code class="language-markdown">+++
-outputs = [&quot;Reveal&quot;]
-+++
-
-# Slide 1
-
----
-
-# Slide 2
-</code></pre>
-</section><section>
-<p>Add slides from other files in <code>content/{section}/*.md</code></p>
-<pre><code class="language-markdown">+++
-weight = 10
-+++
-
-# Slide 3
-
----
-
-# Slide 4
-</code></pre>
-<p><small>💡 Tip: Use <code>weight</code> to specify the order that files should be considered.</small></p>
-</section>
-    <section><h1 id="configuration">Configuration</h1>
-<p>Place configuration values in <code>config.toml</code> or a presentation&rsquo;s front matter (<code>_index.md</code>).</p>
-</section><section>
-<h2 id="revealjs-themes">Reveal.js themes</h2>
-<p>Themes control the look and feel of your presentation. Set the <code>theme</code> param to any <a href="https://github.com/hakimel/reveal.js/#theming">valid Reveal.js theme</a>.</p>
-<pre><code class="language-toml">[params.reveal_hugo]
-theme = &quot;moon&quot;
-</code></pre>
-</section><section>
-<h2 id="use-a-custom-theme">Use a custom theme</h2>
-<p>To use a custom Reveal.js theme, place the CSS file in the <code>static</code> directory and set the <code>custom_theme</code> param.</p>
-<pre><code class="language-toml">[params.reveal_hugo]
-custom_theme = &quot;reveal-hugo/themes/robot-lung.css&quot;
-</code></pre>
-</section><section>
-<h3 id="use-a-custom-theme-advanced">Use a custom theme (advanced)</h3>
-<p>To use Hugo pipes to build a custom Reveal.js theme, place the source file (SCSS / PostCSS) in the <code>assets</code> directory and set the <code>custom_theme_compile</code> param.</p>
-<pre><code class="language-toml">[params.reveal_hugo]
-custom_theme = &quot;reveal-hugo/themes/custom-theme.scss&quot;
-custom_theme_compile = true
-</code></pre>
-<small>
-<p>💡 See the <a href="/custom-theme-example/">custom theme example presentation</a> for more details.</p>
-</small>
-</section><section>
-<h2 id="bundled-themes">Bundled themes</h2>
-<p>reveal-hugo comes with 2 extra Reveal.js themes:</p>
+<h2 id="visual-studio-code-플러그인-git-history">Visual Studio Code 플러그인 Git History</h2>
 <ul>
-<li><a href="https://github.com/dzello/revealjs-themes#robot-lung">robot-lung</a> (this one)</li>
-<li><a href="https://github.com/dzello/revealjs-themes#sunblind">sunblind</a></li>
+<li>History 그래프를 볼 때 유용한 Git History 플러그인</li>
+<li>커밋 히스토리를 보기 위한 <code>git log</code>, 특정 커밋의 시점으로 바꾸는 <code>git checkout</code> 에 대응하는 기능인데 직관적으로 보기 편합니다.</li>
 </ul>
 <br>
-<small>
-<p>They live in the <code>static/reveal-hugo/themes</code> folder and also <a href="https://github.com/dzello/revealjs-themes">on Github</a>.</p>
-</small>
+<iframe name="git-history" src="https://youtu.be/hW6mhIaZjgw" data-autoplay></iframe>
 </section><section>
-<h2 id="revealjs-params">Reveal.js params</h2>
-<p>Set <strong>snakecase</strong> versions of Reveal.js params, which will be camelized and passed to <code>Reveal.initialize</code>.</p>
-<pre><code class="language-toml">[params.reveal_hugo]
-history = true
-slide_number = true
-transition = 'zoom'
-transition_speed = 'fast'
-</code></pre>
-<p><a href="https://github.com/hakimel/reveal.js/#configuration">Full list of params</a></p>
-</section><section>
-<h2 id="highlightjs-themes">highlight.js themes</h2>
-<p>To change the syntax highlighting theme, set the <code>highlight_theme</code>
-to a valid <a href="https://highlightjs.org/static/demo/">highlight.js theme name</a>.</p>
-<pre><code class="language-toml">[params.reveal_hugo]
-highlight_theme = &quot;zenburn&quot;
-</code></pre>
-</section><section>
-<h2 id="extending-the-layout">Extending the layout</h2>
-<p>Use partials to add HTML to the page for one or all presentations at a time.</p>
-<small>
-💡 This is the recommended way to add script and style tags to customize your presentations.
-</small>
-</section><section>
-<p>Here is where to put partials for different presentations and places in the DOM.
-<br><br></p>
-<table>
-<thead>
-<tr>
-<th>Presentation</th>
-<th>Before &lt;/head&gt;</th>
-<th>Before &lt;/body&gt;</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>All</td>
-<td>reveal-hugo/head.html</td>
-<td>reveal-hugo/body.html</td>
-</tr>
-<tr>
-<td>Root</td>
-<td>home/reveal-hugo/head.html</td>
-<td>home/reveal-hugo/body.html</td>
-</tr>
-<tr>
-<td>Section</td>
-<td>{section}/reveal-hugo/head.html</td>
-<td>{section}/reveal-hugo/body.html</td>
-</tr>
-</tbody>
-</table>
-<p> </p>
-<small>
-<p>💡 You can also create an <code>end.html</code> to put content before the end of the <code>.reveal</code> div tag.</p>
-</small>
-</section><section>
-<h2 id="custom-css-example">Custom CSS Example</h2>
-<p>In <code>home/reveal-hugo/head.html</code>:</p>
-<pre><code class="language-html">&lt;style&gt;
-.reveal section h1 {
-  color: blue;
-}
-&lt;/style&gt;
-</code></pre>
-</section><section>
-<h2 id="custom-js-example">Custom JS Example</h2>
-<p>In <code>home/reveal-hugo/body.html</code>:</p>
-<pre><code class="language-html">&lt;script type=&quot;text/javascript&quot;&gt;
-Reveal.addEventListener('slidechanged', function(event) {
-  console.log(&quot;🎞️ Slide is now &quot; + event.indexh);
-});
-&lt;/script&gt;
-</code></pre>
-</section><section>
-<h3 id="extending-the-layout-1">Extending the layout</h3>
-<h4 id="alternative">(alternative)</h4>
-<p>You can declare a custom CSS or javascript in your configuration.</p>
-<pre><code class="language-toml">[reveal_hugo]
-custom_css = &quot;css/custom.css&quot;
-custom_js = &quot;js/custom.js&quot;
-</code></pre>
-<small>
-<p>These files can be located in <code>static/css</code>, <code>static/js</code> folder</p>
-<p>💡 See the <a href="/extending-layout-example/#">extending layout example</a> for more details.</p>
-</small>
-</section>
-    <section><h1 id="shortcodes">Shortcodes</h1>
-</section><section>
-<p>Hugo&rsquo;s shortcodes are similar to functions or templates that extend what you can do with Markdown.</p>
-<p><a href="https://gohugo.io/content-management/shortcodes/">Shortcode documentation</a></p>
-</section>
-    <section><h2 id="fragment">Fragment</h2>
-<p>The <code>fragment</code> shortcode makes content appear incrementally.</p>
-<pre><code>{{% fragment %}} One {{% /fragment %}}
-{{% fragment %}} Two {{% /fragment %}}
-{{% fragment %}} Three {{% /fragment %}}
-</code></pre>
-<p>
-
-<span class='fragment ' >One</span>
-
-
-
-
-<span class='fragment ' >Two</span>
-
-
-
-
-<span class='fragment ' >Three</span>
-
-</p>
-</section><section>
-<h2 id="frag">Frag</h2>
-<p>The <code>frag</code> shortcode is more terse than <code>fragment</code>. It accepts a <code>c</code> attribute.</p>
-<pre><code>{{&lt; frag c=&quot;One&quot; &gt;}}
-{{&lt; frag c=&quot;Two&quot; &gt;}}
-{{&lt; frag c=&quot;Three&quot; &gt;}}
-</code></pre>
-<p><span class='fragment '
-  >
-  One
-</span>
-<span class='fragment '
-  >
-  Two
-</span>
-<span class='fragment '
-  >
-  Three
-</span></p>
-</section><section>
-<p>Both <code>fragment</code> and <code>frag</code> accept two additional parameters:</p>
+<h2 id="visual-studio-code-플러그인-git-history-1">Visual Studio Code 플러그인 Git History</h2>
 <ul>
-<li><code>class</code>: sets the class of the wrapping <code>span</code> element</li>
-<li><code>index</code>: controls the order in which sections will appear</li>
+<li>코드 라인 &amp; 파일 별 히스토리 추적에 용이한 Git Lens 플러그인</li>
 </ul>
-</section>
-    
-<section data-noprocess data-shortcode-slide
-      id="mermaid-shortcode">
-  
-<h1 id="mermaid-diagrams">Mermaid diagrams</h1>
-<p>Use the <code>mermaid</code> shortcode if you need to enable reveal-js highligting module
-(<code>codeFences = false</code>). Otherwize, when <code>codeFences = true</code>, <code>```mermaid ```</code> codeblocks
-are also supported. <a href="hugo-hl-example/#/5">More info</a>.</p>
-<pre><code class="language-code">{{&lt; mermaid &gt;}}
-graph LR
-    A --&gt; B
-    B --&gt; C
-{{&lt; /mermaid &gt;}}
-</code></pre>
-<p>results in:</p>
-<div class="mermaid">
-graph LR
-    A --> B
-    B --> C
-
-</div>
-
-
-</section>
-    <section>
-
-<section data-shortcode-section>
-<h2 id="section">Section</h2>
-<p>The <code>section</code> shortcode groups slides into a <strong>vertical display</strong>.</p>
 <br>
-<small>
-use the down arrow or swipe down to continue
-</small>
-<br>
-<a href="#" class="navigate-down">🔽</a>
+<iframe name="git-lens" src="https://youtu.be/WzIpMlS89HI" data-autoplay></iframe>
 </section><section>
-<p>Put the shortcode around the slides you want to group together.</p>
-<pre><code class="language-markdown">{{% section %}}
+<h2 id="빠르게-훑어-보는-오픈소스-컨트리뷰션uftrace-루틴-1---issue-check-commit">빠르게 훑어 보는 오픈소스 컨트리뷰션(Uftrace) 루틴 1 - Issue Check Commit</h2>
+<p>코드 정적 분석기로 나온 항목 중에 Null 관련 보안 사항이 있었습니다.</p>
+<pre><code class="language-patch">cmds/graph.c:282: error: Null Dereference
+  pointer `graph` last assigned on line 279 could be null and is dereferenced at line 282, column 3.
+  280.
+  281.  if (tg-&gt;utg.graph &amp;&amp; tg-&gt;utg.graph != graph) {
+  282.          pr_dbg(&quot;detect new session: %.*s\n&quot;, SESSION_ID_LEN, graph-&gt;sess-&gt;sid);
+         ^
+  283.          tg-&gt;utg.new_sess = true;
+  284.  }
+</code></pre>
+<p>깃허브 이슈로 등록한 뒤에 해당 사항을 보완하는 작업을 진행합니다.</p>
+<iframe name="commit" src="https://youtu.be/JDUcRbE1AsU" data-autoplay></iframe>
+</section><section>
+<h2 id="빠르게-훑어-보는-github-오픈소스uftrace-컨트리뷰션-루틴-2---before-pr">빠르게 훑어 보는 Github 오픈소스(Uftrace) 컨트리뷰션 루틴 2 - Before PR</h2>
+<p>커밋을 하고 난 뒤에 <code>마지막 커밋 실행 취소</code>로 쉽게 스테이징 단계로 되돌아 올 수 있습니다.</p>
+<iframe name="back-commit" src="https://youtu.be/TIVsQCtw9ME" data-autoplay></iframe>
+</section><section>
+<h2 id="빠르게-훑어-보는-github-오픈소스uftrace-컨트리뷰션-루틴-2---before-pr-1">빠르게 훑어 보는 Github 오픈소스(Uftrace) 컨트리뷰션 루틴 2 - Before PR</h2>
+<p>커밋하고 푸쉬로 origin 브랜치에 반영되었는데 또 수정이 필요하다면?<br>
+커밋을 다시할 필요 없이 마지막 커밋을 <code>git push -f</code> 로 덮어 써줍니다.</p>
+<img src="0022-commit-rollback-update-origin-branch.png" alt="Fcommit-rollback-update-origin-branch.png">
+</section><section>
+<h2 id="빠르게-훑어-보는-github-오픈소스uftrace-컨트리뷰션-루틴-3---pr">빠르게 훑어 보는 Github 오픈소스(Uftrace) 컨트리뷰션 루틴 3 - PR</h2>
+<p>fork 한 브랜치(Downstream)가 Upstream 에 머지할 수 있도록 PR 을 작성하는 단계입니다.</p>
+<iframe name="PR" src="https://youtu.be/wr6dkL0FGPA" data-autoplay></iframe>
+</section><section>
+<h2 id="빠르게-훑어-보는-메일링-리스트-기반-오픈소스linux-kernel-컨트리뷰션-루틴-a---patch">빠르게 훑어 보는 메일링 리스트 기반 오픈소스(Linux Kernel) 컨트리뷰션 루틴 A - Patch</h2>
+<p>github 와 1 ~ 2 와 유사하지만, PR 과 코드 리뷰를 모두 메일로 보냅니다.</p>
+<pre><code class="language-bash">git send-email --smtp-pass=&quot;비밀번호&quot; --to=&quot;메인테이너@이메일.주소&quot; --cc=&quot;참조할@메일.주소들&quot; --confirm=always -M -1
+</code></pre>
+<p>뒤에 카운트는 작업한 커밋 개수를 넣습니다.</p>
+<p>예시</p>
+<pre><code class="language-bash">git send-email --to=&quot;Thomas Gleixner &lt;tglx@linutronix.de&gt;, Marc Zyngier &lt;maz@kernel.org&gt;&quot; --cc=&quot;linux-kernel@vger.kernel.org, Austin Kim &lt;austindh.kim@gmail.com&gt;&quot; --confirm=always -M -1
+</code></pre>
+<p>커밋 메세지를 작성할 때, 영어 작문 실력이 필요하지만, 우리에겐 구글 번역기가 있습니다.</p>
+<pre><code class="language-patch">Hello
 
-## Section slide 1
+Since we have a macro defined in our IRQ subsystem internal functions to
+traverse the list of actions, how about refactoring this loop?
+
+- genirq: Use a common macro to go through the actions list
+(f944b5a7aff05a244a6c8cac297819af09a199e4)
+
+have a good day!
 
 ---
+ kernel/irq/irqdesc.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-## Section slide 2
-
-{{% /section %}}
+diff --git a/kernel/irq/irqdesc.c b/kernel/irq/irqdesc.c
+index 939d21cd55c3..34a0cefff712 100644
+--- a/kernel/irq/irqdesc.c
++++ b/kernel/irq/irqdesc.c
+@@ -246,12 +246,12 @@ static ssize_t actions_show(struct kobject *kobj,
+ 			    struct kobj_attribute *attr, char *buf)
+ {
+ 	struct irq_desc *desc = container_of(kobj, struct irq_desc, kobj);
+-	struct irqaction *action;
++	struct irqaction *action = NULL;
+ 	ssize_t ret = 0;
+ 	char *p = &quot;&quot;;
+ 
+ 	raw_spin_lock_irq(&amp;desc-&gt;lock);
+-	for (action = desc-&gt;action; action != NULL; action = action-&gt;next) {
++	for_each_action_of_desc(desc, action) {
+ 		ret += scnprintf(buf + ret, PAGE_SIZE - ret, &quot;%s%s&quot;,
+ 				 p, action-&gt;name);
+ 		p = &quot;,&quot;;
+-- 
 </code></pre>
-<p>Keep going down.</p>
 </section><section>
-<h2 id="thats-it">That&rsquo;s it!</h2>
-<p>Use the right arrow or swipe right to continue.</p>
+<h2 id="빠르게-훑어-보는-메일링-리스트-기반-오픈소스linux-kernel-컨트리뷰션-루틴-b---code-review">빠르게 훑어 보는 메일링 리스트 기반 오픈소스(Linux Kernel) 컨트리뷰션 루틴 B - Code Review</h2>
+<p>보낸 패치에 대해서 보완해야할 사항을 해당 서브시스템의 메인테이너가 말해줍니다.</p>
+<pre><code class="language-patch">Re: [PATCH] genirq: Refactor actions_show loop block using a common macro to go through the actions list
+    - by Thomas Gleixner @ 2022-04-10 19:17 UTC [7%]
 
-</section>
-</section>
-    <section><h2 id="slide">Slide</h2>
-<p>Use this shortcode when you need to customize slide attributes like id, class, background color and transition.</p>
-</section>
+On Fri, Apr 08 2022 at 20:41, you wrote:
 
-<section data-noprocess data-shortcode-slide
-      class="hello">
-  
-<h2 id="slide-1">Slide</h2>
-<p>Add the shortcode above the slide&rsquo;s content, below the <code>---</code>.</p>
-<pre><code class="language-markdown">---
+thanks for providing this patch.
 
-{{&lt; slide class=&quot;hello&quot; &gt;}}
+&gt; Hello.
+&gt;
+&gt; Since we have a macro defined in our IRQ subsystem internal functions to
+&gt; traverse the list of actions, how about refactoring this loop?
+&gt;
+&gt; - genirq: Use a common macro to go through the actions list
+&gt; (f944b5a7aff05a244a6c8cac297819af09a199e4)
+&gt;
+&gt; have a good day!
 
-## Hello, world!
+Neither 'Hello' nor 'have a good day' are part of the change log.
 
+Also please write the changelog in a factual way and not in form of a
+question. If you want to add a reference to a git commit, then please
+use the canonical form as described in Documentation/process, where you
+also find the general patch submission rules. There is also a tip tree
+specific chapter:
+
+https://www.kernel.org/doc/html/latest/process/maintainer-tip.html?highlight=x86#patch-submission-notes
+
+Following these rules makes everyones life simpler.
+
+&gt; ---
+&gt;  kernel/irq/irqdesc.c | 4 ++--
+&gt;  1 file changed, 2 insertions(+), 2 deletions(-)
+&gt;
+&gt; diff --git a/kernel/irq/irqdesc.c b/kernel/irq/irqdesc.c
+&gt; index 939d21cd55c3..34a0cefff712 100644
+&gt; --- a/kernel/irq/irqdesc.c
+&gt; +++ b/kernel/irq/irqdesc.c
+&gt; @@ -246,12 +246,12 @@ static ssize_t actions_show(struct kobject *kobj,
+&gt;  			    struct kobj_attribute *attr, char *buf)
+&gt;  {
+&gt;  	struct irq_desc *desc = container_of(kobj, struct irq_desc, kobj);
+&gt; -	struct irqaction *action;
+&gt; +	struct irqaction *action = NULL;
+
+There is no NULL initialization required.
+
+Thanks,
+
+        tglx
+</code></pre>
+</section><section>
+<h2 id="빠르게-훑어-보는-메일링-리스트-기반-오픈소스linux-kernel-컨트리뷰션-루틴-b---resend-version">빠르게 훑어 보는 메일링 리스트 기반 오픈소스(Linux Kernel) 컨트리뷰션 루틴 B - Resend Version</h2>
+<p>보완한 패치를 다시 보냅니다. 서브시스템의 메인테이너가 말해줍니다.</p>
+<pre><code class="language-patch">Refactor for loop to macro for_each_action_of_desc
+
+Signed-off-by: Paran Lee &lt;p4ranlee@gmail.com&gt;
 ---
+ kernel/irq/irqdesc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/kernel/irq/irqdesc.c b/kernel/irq/irqdesc.c
+index d323b180b0f3..5db0230aa6b5 100644
+--- a/kernel/irq/irqdesc.c
++++ b/kernel/irq/irqdesc.c
+@@ -251,7 +251,7 @@ static ssize_t actions_show(struct kobject *kobj,
+ 	char *p = &quot;&quot;;
+ 
+ 	raw_spin_lock_irq(&amp;desc-&gt;lock);
+-	for (action = desc-&gt;action; action != NULL; action = action-&gt;next) {
++	for_each_action_of_desc(desc, action) {
+ 		ret += scnprintf(buf + ret, PAGE_SIZE - ret, &quot;%s%s&quot;,
+ 				 p, action-&gt;name);
+ 		p = &quot;,&quot;;
 </code></pre>
-</section>
+</section><section>
+<h2 id="빠르게-훑어-보는-메일링-리스트-기반-오픈소스linux-kernel-컨트리뷰션-루틴-b---merged">빠르게 훑어 보는 메일링 리스트 기반 오픈소스(Linux Kernel) 컨트리뷰션 루틴 B - Merged</h2>
+<p>보낸 패치가 v6.0-rc1 에서 머지되었습니다.</p>
+<p>[GIT pull] irq/core for v6.0-rc1
+- by Thomas Gleixner @ 2022-08-01 14:48 UTC [1%]</p>
+<pre><code class="language-patch">The following commit has been merged into the irq/irqchip-next branch of irqchip:
 
-<section data-noprocess data-shortcode-slide
-      data-transition="zoom"
-      data-transition-speed="fast">
-  
-<h2 id="custom-slide-1">Custom slide 1</h2>
-<p><small>Did you notice? This slide has a fast zoom transition.</small></p>
-<pre><code class="language-markdown">---
+Commit-ID:     c904cda04482d5ab545e5a82cee6084078ef9543
+Gitweb:        https://git.kernel.org/pub/scm/linux/kernel/git/maz/arm-platforms/c904cda04482d5ab545e5a82cee6084078ef9543
+AuthorDate:    Sun, 10 Jul 2022 20:26:14 +09:00
+Committer:     Marc Zyngier &lt;maz@kernel.org&gt;
+CommitterDate: Wed, 20 Jul 2022 15:21:32 +01:00
 
-{{&lt; slide transition=&quot;zoom&quot; transition-speed=&quot;fast&quot; &gt;}}
+genirq: Use for_each_action_of_desc in actions_show()
 
-## Custom slide 1
+Refactor action_show() to use for_each_action_of_desc instead
+of a similar open-coded loop.
 
+[maz: reword commit message]
+Signed-off-by: Marc Zyngier &lt;maz@kernel.org&gt;
+Link: https://lore.kernel.org/r/20220710112614.19410-1-p4ranlee@gmail.com
 ---
-</code></pre>
-</section>
+ kernel/irq/irqdesc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-<section data-noprocess data-shortcode-slide
-      data-background-color="#FF4081">
-  
-<h2 id="custom-slide-2">Custom slide 2</h2>
-<p><small>This slide has a different background color.</small></p>
-<pre><code class="language-markdown">---
-
-{{&lt; slide background-color=&quot;#FF4081&quot; &gt;}}
-
-## Custom slide 2
-
----
-</code></pre>
-</section>
-
-<section data-noprocess data-shortcode-slide
-      data-background-color="#000000"
-      data-background-image="/images/alex-litvin-790876-unsplash.jpg">
-  
-<h2 id="custom-slide-3">Custom slide 3</h2>
-<p><small>This slide has a background image.</small></p>
-<pre><code class="language-markdown">---
-
-{{&lt; slide background-image=&quot;/images/alex-litvin-790876-unsplash.jpg&quot; &gt;}}
-
----
-</code></pre>
-<p><small>(credit <a href="https://unsplash.com/@alexlitvin">Alex Litvin</a>)</small></p>
-</section>
-
-<section data-noprocess data-shortcode-slide
-      id="custom-slide">
-  
-<p>💡 Tip: Setting a slide&rsquo;s <code>id</code> attribute makes it easy to link to from other parts of the presentation.
-<br><br></p>
-<pre><code class="language-markdown">---
-
-{{&lt; slide id=&quot;custom-slide&quot; &gt;}}
-
-## Custom slide
-
----
+diff --git a/kernel/irq/irqdesc.c b/kernel/irq/irqdesc.c
+index d323b18..5db0230 100644
+--- a/kernel/irq/irqdesc.c
++++ b/kernel/irq/irqdesc.c
+@@ -251,7 +251,7 @@ static ssize_t actions_show(struct kobject *kobj,
+ 	char *p = &quot;&quot;;
+ 
+ 	raw_spin_lock_irq(&amp;desc-&gt;lock);
+-	for (action = desc-&gt;action; action != NULL; action = action-&gt;next) {
++	for_each_action_of_desc(desc, action) {
+ 		ret += scnprintf(buf + ret, PAGE_SIZE - ret, &quot;%s%s&quot;,
+ 				 p, action-&gt;name);
+ 		p = &quot;,&quot;;
 </code></pre>
 </section><section>
-<pre><code class="language-markdown">[Try the link](#custom-slide)
-</code></pre>
-<br>
-<p><a href="#custom-slide">Try the link</a></p>
-</section><section>
-<p>Slide attribute possibilities from the <a href="https://github.com/hakimel/reveal.js">Reveal.js docs</a>:</p>
-<ul>
-<li><code>autoslide</code></li>
-<li><code>state</code></li>
-<li><code>background</code></li>
-<li><code>background-color</code></li>
-<li><code>background-image</code></li>
-<li><code>background-size</code></li>
-<li><code>background-position</code></li>
-<li><code>background-repeat</code></li>
-</ul>
-</section><section>
-<ul>
-<li><code>background-video</code></li>
-<li><code>background-video-loop</code></li>
-<li><code>background-video-muted</code></li>
-<li><code>background-interactive</code></li>
-<li><code>background-iframe</code></li>
-<li><code>background-transition</code></li>
-<li><code>transition</code> (can have different in and out transitions)</li>
-<li><code>transition-speed</code></li>
-<li><code>notes</code> (can also use the note shortcode)</li>
-<li><code>timing</code></li>
-</ul>
-</section><section>
-
-
-<section data-shortcode-section>
-<h2 id="slide-templates">Slide templates</h2>
-<p>Store sets of common slide attributes in front matter variables and apply them to slides with the template attribute.</p>
-<br>
-<small>
-navigate down to learn more
-</small>
-<br>
-<a href="#" class="navigate-down">🔽</a>
-</section><section>
-<p>Create templates in config.toml, _index.md or the current page&rsquo;s front matter. Put them under the <strong>templates</strong> key with a meaningful name:</p>
-<pre><code class="language-toml">[reveal_hugo.templates.hotpink]
-class = &quot;hotpink&quot;
-background = &quot;#FF4081&quot;
-</code></pre>
-</section>
-<section data-noprocess data-shortcode-slide
-    data-background="#FF4081"
-    class="hotpink"
-    data-template="hotpink">
-<p>Apply the template using the <strong>template</strong> attribute of the slide shortcode:</p>
-<pre><code class="language-markdown">{{&lt; slide template=&quot;hotpink&quot; &gt;}}
-
-# I'm a hot pink slide!
-</code></pre>
-</section><section>
-<p>If a template exists in multiple configurations, it&rsquo;s properties will be merged. If a property is declared multiple times, the order of precedence is:</p>
-<ul>
-<li>page</li>
-<li>section (_index.md)</li>
-<li>site (config.toml)</li>
-</ul>
-
-</section>
-</section>
-
-
-<section data-shortcode-section>
-<section data-noprocess data-shortcode-slide>
-  <h2 id="reusable-slides">Reusable slides</h2>
-<p>Store markdown in a <a href="https://gohugo.io/templates/data-templates/">data template</a> and reuse it in multiple sections or presentations.</p>
-<br>
-<small>
-navigate down to learn more
-</small>
-<br>
-<a href="#" class="navigate-down">🔽</a>
-</section>
-<section data-noprocess data-shortcode-slide>
-<p>Add a <code>example</code> key to data/home.toml:</p>
-<pre><code class="language-toml">example = &quot;I'm a slide&quot;
-</code></pre>
-<br>
-<p>Set the <code>content</code> attribute to &ldquo;home.example&rdquo;:</p>
-<pre><code class="language-markdown">
-<section data-noprocess data-shortcode-slide>
-<p></code></pre></p>
-</section>
-<section data-noprocess data-shortcode-slide>
-<p>💡 Each data template entry can contain one or more slides, separated by <code>---</code> with newlines.</p>
-</section>
-<section data-noprocess data-shortcode-slide>
-<p>💡 All other slide shortcode attributes (background, transition, etc.) can be used and will be applied to each slide in the data template entry.</p>
-</section>
-<section data-noprocess data-shortcode-slide>
-<p>💡 Adding a new file in <code>data</code> folder requires to restart <code>hugo</code></p>
-<p>💡 Symbolic links are not allowed in <code>data</code> folder</p>
-</section>
-<section data-noprocess data-shortcode-slide>
-  <p>You can organize reusables into folder.</p>
-<p>An an <code>example</code> key in <code>data/common/nested.toml</code></p>
-<pre><code class="language-toml">example = &quot;I'm a slide&quot;
-</code></pre>
-<br>
-<p>Set the <code>content</code> attribute to &ldquo;common.nested.example&rdquo;:</p>
-<pre><code class="language-markdown">
-<section data-noprocess data-shortcode-slide>
-<p></code></pre></p>
-
-</section>
-</section><section>
-
-
-<section data-shortcode-section>
-<h2 id="slide-specific-css">Slide-specific CSS</h2>
-<p>Add more variety to your presentation by applying slide-specific CSS.</p>
-<br>
-<small>
-navigate down to learn more
-</small>
-<br>
-<a href="#" class="navigate-down">🔽</a>
-</section><section>
-<p>First, use the <code>slide</code> shortcode to give the slide a class:</p>
-<pre><code class="language-markdown">---
-
-{{&lt; slide class=&quot;side-by-side&quot; &gt;}}
-
-# 📈
-
-# 📊
-
----
-</code></pre>
-</section><section>
-<p>Next, use a layout extension partial like <code>reveal-hugo/head.html</code> to add CSS selectors:</p>
-<pre><code class="language-html">&lt;style&gt;
-.reveal section.side-by-side h1 {
-  position: absolute;
-}
-.reveal section.side-by-side h1:first-of-type {
-  left: 25%;
-}
-.reveal section.side-by-side h1:nth-of-type(2) {
-  right: 25%;
-}
-&lt;/style&gt;
-</code></pre>
-</section>
-<section data-noprocess data-shortcode-slide
-      class="side-by-side">
-<h1 id="heading">📈</h1>
-<h1 id="heading-1">📊</h1>
-
-</section>
-</section>
-    <section data-noprocess data-markdown
-  data-separator="^\r?\n---\r?\n$"
-  data-separator-vertical="^\r?\n------\r?\n$"
-  data-separator-notes="notes?:">
-  <script type="text/template">
-    
-
-## Markdown
-
-Reveal.js has its own [markdown processor](https://github.com/hakimel/reveal.js#markdown). To use that instead of Hugo, surround a slide with the markdown shortcode.
-
-```markdown
-{{< markdown >}}
-
-# Hello world!
-
-{{< /markdown >}}
-```
-
-<br>
-<small>
-💡 Make sure to use the `{{< >}}` shortcode syntax to avoid rendering by Hugo.
-</small>
-
----
-
-<!-- .slide: data-background="#FF4081" -->
-
-Reveal.js markdown uses HTML comments to change slide properties, like background color.
-
-```markdown
-{{< markdown >}}
-<!-- .slide: data-background="#FF4081" -->
-# I'm a colorful slide
-{{< /markdown >}}
-```
-
-
-  </script>
-</section>
-</section>
-    <section><h2 id="notes">Notes</h2>
-<p>Add speaker notes (with markdown) to your presentation with the <code>note</code> shortcode. Type &rsquo;s&rsquo; to see this slide&rsquo;s speaker notes.</p>
-<pre><code class="language-markdown">---
-
-{{% note %}}
-- You found the **speaker notes**!
-{{% /note %}}
-
----
-</code></pre>
-
-
-
-<aside class="notes"><ul>
-<li>You found the <strong>speaker notes</strong>!</li>
-</ul>
-</aside>
-</section>
-
-<section data-noprocess data-shortcode-slide
-      data-notes="You found the notes!">
-  
-<h2 id="notes-1">Notes</h2>
-<p>You can also add notes with the <code>slide</code> shortcode and <code>notes</code> attribute:</p>
-<pre><code class="language-markdown">---
-
-{{% slide notes=&quot;You found the notes!&quot; %}}
-
----
-</code></pre>
-</section>
-<section data-noprocess>
-  <h2>Write slides in HTML</h2>
-  <p>Use a <code>section</code> tag with a <code>data-noprocess</code> attribute to avoid any processing by reveal-hugo.</p>
-  <pre>
-&lt;section data-noprocess&gt;
-  &lt;h1&gt;Hello world!&lt;/h1&gt;
-&lt;/section&gt;</pre>
-  <small>💡 This is useful if you can't get Markdown to output exactly what you want.</small>
-</section>
-</section>
-    <section><h1 id="resources">Resources</h1>
-</section><section>
-<h2 id="code-and-docs">Code and docs</h2>
-<ul>
-<li><a href="https://github.com/dzello/reveal-hugo">reveal-hugo Github README</a></li>
-<li><a href="https://github.com/dzello/reveal-hugo/tree/master/exampleSite">Content for this presentation</a></li>
-</ul>
-</section><section>
-<h2 id="external-resources">External resources</h2>
-<ul>
-<li><a href="https://revealjs.com/">Reveal.js</a></li>
-<li><a href="https://gohugo.io/">Hugo docs</a></li>
-<li><a href="https://gohugo.io/templates/output-formats/">Hugo output format docs</a></li>
-</ul>
-</section><section>
-<h2 id="designed-to">Designed to&hellip;</h2>
-<ul>
-<li>Deploy to <a href="https://netlify.com/">Netlify</a></li>
-<li>Edit with <a href="https://forestry.io/">Forestry</a></li>
-</ul>
-</section><section>
-<h1 id="heading">🙏</h1>
-<p>Contribute by opening issues and pull requests.</p>
-</section><section>
-<h1 id="thanks">Thanks!</h1>
-</section><section>
-<h1 id="heading-1">↩️</h1>
-<h4 id="start-over"><a href="#">Start over</a></h4>
+<h1 id="heading">🤗</h1>
+<p>고생하셨습니다!</p>
 </section>
 
 </div>
@@ -840,7 +364,6 @@ Reveal.js markdown uses HTML comments to change slide properties, like backgroun
 
 
 
-  
 
 
 
@@ -850,7 +373,6 @@ Reveal.js markdown uses HTML comments to change slide properties, like backgroun
 
 
 
-  
 
 
 

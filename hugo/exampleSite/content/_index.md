@@ -15,8 +15,8 @@ background = "#FF4081"
 
 # 📽️
 
-# reveal-hugo
+### VS Code 너가 있어 편리한 Git, 덤으로 보는 오픈소스 기여 🤗
 
-A Hugo theme for creating Reveal.js presentations.
+10분 안에 살펴보는 VS Code → Github or Mailing 기반 오픈소스 기여하기
 
-~ made by [@dzello](https://dzello.com/) ~
+인지기술팀 김윤성
