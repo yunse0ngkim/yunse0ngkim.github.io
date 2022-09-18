@@ -68,9 +68,9 @@
 
     <section><h2 id="vs-code-를-활용한-git">VS Code 를 활용한 Git</h2>
 <ul>
-<li>마이크로소프트 윈도우, macOS, 리눅스용으로 개발한 소스 코드 편집기이다.</li>
-<li>Plugin 을 추가하여 풍부한 기능을 가진 IDE 로 사용할 수 있다.</li>
-<li>VS Code 자체적으로 지원하는 Git 기능
+<li>마이크로소프트 윈도우, macOS, 리눅스용으로 electron(node.js) 기반 편집기입니다.</li>
+<li>Plugin 을 추가하여 풍부한 기능을 가진 IDE 로 사용할 수 있습니다.</li>
+<li>VS Code 자체적으로 지원하는 Git 기능이 참 편리합니다.
 <ul>
 <li>철권처럼 커맨드를 조합하여 사용하는 기능을 버튼 하나로 함축했습니다.</li>
 </ul>
@@ -79,10 +79,10 @@
 </ul>
 </section><section>
 <h2 id="git-command">Git Command</h2>
-<img src="0010-git-cheetsheet.png" alt="그림 2 : Git 커맨드 요약본" width=300>
+<img src="0010-git-cheetsheet.png" alt="그림 2 : Git 커맨드 요약본" width="600">
 </section><section>
 <h2 id="vs-code-를-활용한-git-1">VS Code 를 활용한 Git</h2>
-<img src="0010-vscode-git.png" alt="그림 1 : VS Code 에서 Git" width=300>
+<img src="0010-vscode-git.png" alt="그림 1 : VS Code 에서 Git" width="500">
 </section><section>
 <h2 id="git-history">Git History</h2>
 <ul>
@@ -107,7 +107,7 @@ alt="Git Lens" width="400" height="300" /></a></p>
 <ul>
 <li>오픈소스 프로젝트
 <ul>
-<li>Github, Gitlab, cgit 등의 git 기반 호스팅에 레포지토리들</li>
+<li><em>Github</em>, Gitlab, cgit 등의 git 기반 호스팅에 레포지토리들</li>
 </ul>
 </li>
 <li>각 프로젝트에 Core, Util, Docs, unit-test, run-test, CI/CD 등에 기여합니다.
@@ -124,7 +124,7 @@ alt="Git Lens" width="400" height="300" /></a></p>
 </li>
 </ul>
 </li>
-<li>각 프로젝트마다 wiki 나 최상단에 컨트리뷰션 가이드 문서가 있습니다.
+<li>wiki 또는 소스 최상단 컨트리뷰션 가이드 문서 예시입니다.
 <ul>
 <li><a href="https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md">pytorch - CONTRIBUTING.md</a></li>
 <li><a href="https://github.com/microsoft/ebpf-for-windows/blob/main/CONTRIBUTING.md">ebpf-for-windows - CONTRIBUTING.md</a></li>
@@ -134,38 +134,37 @@ alt="Git Lens" width="400" height="300" /></a></p>
 </ul>
 </section><section>
 <h2 id="contribution---review">Contribution - Review</h2>
-<p>국제적으로 메일링 기록이 남기 때문에,
-메인테이너들이 사소한 패치라도 신중하게 리뷰해줍니다.
-특히, 컴파일된 코드 관련해서는 패치를 보낸 기여자를 설득하기 위해서
+<p>국제적으로 메일링 기록이 남기 때문에,<br>
+메인테이너들이 사소한 패치라도 신중하게 리뷰해줍니다.</p>
+<br>
+<p>특히, Pull Request(패치)를 보낸 기여자를 설득하기 위해서<br>
 어려운 동작을 자세히 설명해주어 많은 도움이 되었습니다.</p>
 </section><section>
 <h2 id="github-uftrace---commit">Github Uftrace - Commit</h2>
-<p>코드 정적 분석기로 나온 항목 중에 Null 관련 보안 사항이 있었습니다.</p>
+<p>코드 정적 분석기로 나온 항목 중에 Null 관련 보안 사항을 확인한 후 패치를 해봅니다.</p>
 <pre><code class="language-patch">cmds/graph.c:282: error: Null Dereference
-  pointer `graph` last assigned on line 279 could be null and is dereferenced at line 282, column 3.
-  280.
+  pointer `graph` last assigned on line 279 could be null 
+  and is dereferenced at line 282, column 3.
   281.  if (tg-&gt;utg.graph &amp;&amp; tg-&gt;utg.graph != graph) {
   282.          pr_dbg(&quot;detect new session: %.*s\n&quot;, SESSION_ID_LEN, graph-&gt;sess-&gt;sid);
          ^
-  283.          tg-&gt;utg.new_sess = true;
-  284.  }
 </code></pre>
-<p>깃허브 이슈로 등록한 뒤에 해당 사항을 보완하는 작업을 진행합니다.</p>
-<p><a href="http://www.youtube.com/watch?feature=player_embedded&v=JDUcRbE1AsU
+<p>깃허브 이슈로 등록한 뒤에 해당 사항을 보완하는 작업을 진행합니다.<br>
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=JDUcRbE1AsU
 " target="_blank"><img src="http://img.youtube.com/vi/JDUcRbE1AsU/0.jpg" 
-alt="Commit" width="400" height="300" /></a></p>
+alt="Commit" width="300" height="240" /></a></p>
 </section><section>
-<h2 id="before-pr">Before PR</h2>
-<p>커밋을 하고 난 뒤에 <code>마지막 커밋 실행 취소</code>로 쉽게 스테이징 단계로 되돌아 올 수 있습니다.<br>
+<h3 id="before-pr">Before PR</h3>
+<p>커밋을 하고 난 뒤에 <em>마지막 커밋 실행 취소</em>로 쉽게 스테이징 단계로 되돌아 올 수 있습니다.<br>
 코드리뷰를 받고 보완할 부분이 있다면, 활용하면 좋습니다.</p>
 <p><a href="http://www.youtube.com/watch?feature=player_embedded&v=TIVsQCtw9ME
 " target="_blank"><img src="http://img.youtube.com/vi/TIVsQCtw9ME/0.jpg" 
-alt="Before PR" width="400" height="300" /></a></p>
+alt="Before PR" width="450" height="400" /></a></p>
 </section><section>
-<h2 id="before-pr-1">Before PR</h2>
+<h3 id="before-pr-1">Before PR</h3>
 <p>커밋하고 푸쉬로 origin 브랜치에 반영되었는데 또 수정이 필요하다면?<br>
 커밋을 다시할 필요 없이 마지막 커밋을 <code>git push -f</code> 로 덮어 써줍니다.</p>
-<img src="0022-commit-rollback-update-origin-branch.png" alt="commit-rollback-update-origin-branch.png">
+<img src="0022-commit-rollback-update-origin-branch.png" alt="commit-rollback-update-origin-branch.png" width="500">
 </section><section>
 <h2 id="pr">PR</h2>
 <p>fork 한 브랜치(Downstream)를 origin(Upstream)에 머지할 수 있도록 PR 을 작성하는 단계입니다.</p>
@@ -175,12 +174,20 @@ alt="PR" width="600" height="480" /></a></p>
 </section><section>
 <h2 id="linux-kernel---send-patch">Linux Kernel - Send Patch</h2>
 <p>소스 최상단의 <code>MAINTAINERS</code> 참고하여 github 와 1 ~ 2 와 유사하지만, PR 과 코드 리뷰를 모두 담당자의 메일로 보냅니다.</p>
-<pre><code class="language-bash">git send-email --smtp-pass=&quot;비밀번호&quot; --to=&quot;메인테이너@이메일.주소&quot; --cc=&quot;참조할@메일.주소들&quot; --confirm=always -M -1
+<pre><code class="language-bash">git send-email --smtp-pass=&quot;비밀번호&quot; \
+  --to=&quot;메인테이너@이메일.주소&quot; \
+  --cc=&quot;참조할@메일.주소들&quot; \
+  --confirm=always -M -1
 </code></pre>
 <p>뒤에 카운트는 작업한 커밋 개수를 넣습니다.</p>
-<pre><code class="language-bash">git send-email --to=&quot;Thomas Gleixner &lt;tglx@linutronix.de&gt;, Marc Zyngier &lt;maz@kernel.org&gt;&quot; --cc=&quot;linux-kernel@vger.kernel.org, Austin Kim &lt;austindh.kim@gmail.com&gt;&quot; --confirm=always -M -1
+<pre><code class="language-bash">git send-email \
+  --to=&quot;Thomas Gleixner &lt;tglx@linutronix.de&gt;, Marc Zyngier &lt;maz@kernel.org&gt;&quot;
+  --cc=&quot;linux-kernel@vger.kernel.org, Austin Kim &lt;austindh.kim@gmail.com&gt;&quot;
+  --confirm=always -M -1
 </code></pre>
-<p>커밋 메세지를 작성할 때, 영어 작문 실력이 필요하지만, 우리에겐 구글 번역기가 있습니다.</p>
+<h3 id="send-patchcontd">Send Patch(Cont&rsquo;d)</h3>
+<p>커밋 메세지를 작성할 때, 영어 작문 실력이 필요하지만,<br>
+우리에겐 <em>구글 번역기</em>가 있습니다.</p>
 <pre><code class="language-patch">Hello
 
 Since we have a macro defined in our IRQ subsystem internal functions to
@@ -217,8 +224,8 @@ index 939d21cd55c3..34a0cefff712 100644
 -- 
 </code></pre>
 </section><section>
-<h2 id="maintainers-code-review">Maintainer&rsquo;s Code Review</h2>
-<p>보낸 패치에 대해서 보완해야할 사항을 해당 서브시스템의 메인테이너가 말해줍니다.</p>
+<h3 id="maintainers-code-review">Maintainer&rsquo;s Code Review</h3>
+<p>해당 서브시스템의 메인테이너가 보낸 패치에 대해서 보완해야할 사항을 리뷰해줍니다.</p>
 <pre><code class="language-patch">Re: [PATCH] genirq: Refactor actions_show loop block using a common macro to go through the actions list
     - by Thomas Gleixner @ 2022-04-10 19:17 UTC [7%]
 
@@ -270,8 +277,9 @@ Thanks,
         tglx
 </code></pre>
 </section><section>
-<h2 id="resend-patch-v2">Resend Patch V2</h2>
-<p>보완한 패치를 다시 보냅니다. 서브시스템의 메인테이너가 말해줍니다.</p>
+<h3 id="resend-patch-v2">Resend Patch V2</h3>
+<p>보완한 패치를 다시 보냅니다.<br>
+충분하다면 머지 예정을 알려주고, 또는 추가 보완 사항을 알려줍니다.</p>
 <pre><code class="language-patch">Refactor for loop to macro for_each_action_of_desc
 
 ---
@@ -293,10 +301,8 @@ index d323b180b0f3..5db0230aa6b5 100644
  		p = &quot;,&quot;;
 </code></pre>
 </section><section>
-<h2 id="linux-kernel---check-patch-merge">Linux Kernel - Check Patch Merge</h2>
-<p>보낸 패치는 v6.0-rc1 에서 머지되었습니다.</p>
-<p>[GIT pull] irq/core for v6.0-rc1
-- by Thomas Gleixner @ 2022-08-01 14:48 UTC [1%]</p>
+<h3 id="linux-kernel---check-patch-merge">Linux Kernel - Check Patch Merge</h3>
+<p>보낸 패치는 v6.0-rc1 에서 <code>[GIT pull] irq/core for v6.0-rc1 - by Thomas Gleixner @ 2022-08-01 14:48 UTC [1%]</code> 머지되었습니다.</p>
 <pre><code class="language-patch">The following commit has been merged into the irq/irqchip-next branch of irqchip:
 
 Commit-ID:     c904cda04482d5ab545e5a82cee6084078ef9543
@@ -333,8 +339,9 @@ index d323b18..5db0230 100644
 </code></pre>
 </section><section>
 <h1 id="heading">🤗</h1>
-<p>고생하셨습니다!</p>
-<h2 id="contribution---reviewcontd">Contribution - Review(Cont&rsquo;d)</h2>
+<p>이상입니다. ^^7 고생하셨습니다!</p>
+</section><section>
+<h3 id="contribution---ps">Contribution - P.S.</h3>
 <p>기억에 남는 몇 가지 패치 항목들입니다.</p>
 <ol>
 <li><code>Xen Hypervisor</code> 암묵적인 casting 으로 실제 코드가 길어지는 현상</li>
@@ -383,7 +390,7 @@ Cheers,
 Julien Grall
 </code></pre>
 </section><section>
-<h2 id="contribution---reviewcontd-1">Contribution - Review(Cont&rsquo;d)</h2>
+<h3 id="contribution---pscontd">Contribution - P.S.(Cont&rsquo;d)</h3>
 <ol start="2">
 <li><code>Uftrace</code> 함수를 뛰어다니는 분기(try-catch 구현) longjmp() 가 컴파일러 최적화로 동작을 안하는 현상</li>
 </ol>
@@ -406,6 +413,8 @@ Another solution is to make bar function has more contents
 so that it can't be optimized in clang.
 </code></pre>
 </section><section>
+<h1 id="heading-1">🤗</h1>
+<p>진짜 끝 🤗</p>
 </section>
 
 </div>
