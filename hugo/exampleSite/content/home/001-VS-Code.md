@@ -21,13 +21,13 @@ weight = 10
 
 ## Git Command
 
-<img src="0010-git-cheetsheet.png" alt="그림 2 : Git 커맨드 요약본" width=300>
+<img src="0010-git-cheetsheet.png" alt="그림 2 : Git 커맨드 요약본" width="600">
 
 ---
 
 ## VS Code 를 활용한 Git
 
-<img src="0010-vscode-git.png" alt="그림 1 : VS Code 에서 Git" width=300>
+<img src="0010-vscode-git.png" alt="그림 1 : VS Code 에서 Git" width="500">
 
 ---
 
@@ -62,7 +62,7 @@ alt="Git Lens" width="400" height="300" /></a>
 - 각 프로젝트에 Core, Util, Docs, unit-test, run-test, CI/CD 등에 기여합니다.
   - 1. 게시판 형태의 플랫폼은 issue 를 확인
   - 2. 메일링 기반은 메일링 등록
-- 각 프로젝트마다 wiki 나 최상단에 컨트리뷰션 가이드 문서가 있습니다.
+- wiki 또는 소스 최상단 컨트리뷰션 가이드 문서 예시입니다.
   - [pytorch - CONTRIBUTING.md](https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md)
   - [ebpf-for-windows - CONTRIBUTING.md](https://github.com/microsoft/ebpf-for-windows/blob/main/CONTRIBUTING.md)
   - [Linux Kernel - Patch submission notes](https://www.kernel.org/doc/html/latest/process/maintainer-tip.html?highlight=x86#patch-submission-notes)
@@ -71,30 +71,29 @@ alt="Git Lens" width="400" height="300" /></a>
 
 ## Contribution - Review
 
-국제적으로 메일링 기록이 남기 때문에,
-메인테이너들이 사소한 패치라도 신중하게 리뷰해줍니다.
-특히, 컴파일된 코드 관련해서는 패치를 보낸 기여자를 설득하기 위해서
+국제적으로 메일링 기록이 남기 때문에,  
+메인테이너들이 사소한 패치라도 신중하게 리뷰해줍니다.  
+
+<br>
+
+특히, Pull Request(패치)를 보낸 기여자를 설득하기 위해서  
 어려운 동작을 자세히 설명해주어 많은 도움이 되었습니다.
 
 ---
 
 ## Github Uftrace - Commit
 
-코드 정적 분석기로 나온 항목 중에 Null 관련 보안 사항이 있었습니다.
+코드 정적 분석기로 나온 항목 중에 Null 관련 보안 사항을 확인한 후 패치를 해봅니다.
 ```patch
 cmds/graph.c:282: error: Null Dereference
   pointer `graph` last assigned on line 279 could be null 
   and is dereferenced at line 282, column 3.
-  280.
   281.  if (tg->utg.graph && tg->utg.graph != graph) {
   282.          pr_dbg("detect new session: %.*s\n", SESSION_ID_LEN, graph->sess->sid);
          ^
-  283.          tg->utg.new_sess = true;
-  284.  }
 ```
 
-깃허브 이슈로 등록한 뒤에 해당 사항을 보완하는 작업을 진행합니다.
-
+깃허브 이슈로 등록한 뒤에 해당 사항을 보완하는 작업을 진행합니다.  
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=JDUcRbE1AsU
 " target="_blank"><img src="http://img.youtube.com/vi/JDUcRbE1AsU/0.jpg" 
 alt="Commit" width="300" height="240" /></a>
@@ -104,9 +103,6 @@ alt="Commit" width="300" height="240" /></a>
 ### Before PR
 
 커밋을 하고 난 뒤에 *마지막 커밋 실행 취소*로 쉽게 스테이징 단계로 되돌아 올 수 있습니다.  
-
-<br>
-
 코드리뷰를 받고 보완할 부분이 있다면, 활용하면 좋습니다.  
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=TIVsQCtw9ME
@@ -120,7 +116,7 @@ alt="Before PR" width="450" height="400" /></a>
 커밋하고 푸쉬로 origin 브랜치에 반영되었는데 또 수정이 필요하다면?  
 커밋을 다시할 필요 없이 마지막 커밋을 `git push -f` 로 덮어 써줍니다.  
 
-<img src="0022-commit-rollback-update-origin-branch.png" alt="commit-rollback-update-origin-branch.png">
+<img src="0022-commit-rollback-update-origin-branch.png" alt="commit-rollback-update-origin-branch.png" width="500">
 
 ---
 
