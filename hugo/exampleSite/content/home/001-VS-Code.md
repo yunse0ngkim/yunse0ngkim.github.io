@@ -11,9 +11,9 @@ weight = 10
 
 ## VS Code 를 활용한 Git
 
-- 마이크로소프트 윈도우, macOS, 리눅스용으로 개발한 소스 코드 편집기이다.
-- Plugin 을 추가하여 풍부한 기능을 가진 IDE 로 사용할 수 있다.
-- VS Code 자체적으로 지원하는 Git 기능
+- 마이크로소프트 윈도우, macOS, 리눅스용으로 electron(node.js) 기반 편집기입니다.
+- Plugin 을 추가하여 풍부한 기능을 가진 IDE 로 사용할 수 있습니다.
+- VS Code 자체적으로 지원하는 Git 기능이 참 편리합니다.
   - 철권처럼 커맨드를 조합하여 사용하는 기능을 버튼 하나로 함축했습니다.
 - 추가적으로 Git 기능 외에도 SSH 또는 Live Share 원격 개발 환경 및 멀티 유저 편집이 가능합니다.
 
@@ -58,7 +58,7 @@ alt="Git Lens" width="400" height="300" /></a>
 
 ## CONTRIBUTING
 - 오픈소스 프로젝트
-  - Github, Gitlab, cgit 등의 git 기반 호스팅에 레포지토리들
+  - *Github*, Gitlab, cgit 등의 git 기반 호스팅에 레포지토리들
 - 각 프로젝트에 Core, Util, Docs, unit-test, run-test, CI/CD 등에 기여합니다.
   - 1. 게시판 형태의 플랫폼은 issue 를 확인
   - 2. 메일링 기반은 메일링 등록
@@ -83,7 +83,8 @@ alt="Git Lens" width="400" height="300" /></a>
 코드 정적 분석기로 나온 항목 중에 Null 관련 보안 사항이 있었습니다.
 ```patch
 cmds/graph.c:282: error: Null Dereference
-  pointer `graph` last assigned on line 279 could be null and is dereferenced at line 282, column 3.
+  pointer `graph` last assigned on line 279 could be null 
+  and is dereferenced at line 282, column 3.
   280.
   281.  if (tg->utg.graph && tg->utg.graph != graph) {
   282.          pr_dbg("detect new session: %.*s\n", SESSION_ID_LEN, graph->sess->sid);
@@ -96,22 +97,25 @@ cmds/graph.c:282: error: Null Dereference
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=JDUcRbE1AsU
 " target="_blank"><img src="http://img.youtube.com/vi/JDUcRbE1AsU/0.jpg" 
-alt="Commit" width="400" height="300" /></a>
+alt="Commit" width="300" height="240" /></a>
 
 ---
 
-## Before PR
+### Before PR
 
-커밋을 하고 난 뒤에 `마지막 커밋 실행 취소`로 쉽게 스테이징 단계로 되돌아 올 수 있습니다.  
-코드리뷰를 받고 보완할 부분이 있다면, 활용하면 좋습니다.
+커밋을 하고 난 뒤에 *마지막 커밋 실행 취소*로 쉽게 스테이징 단계로 되돌아 올 수 있습니다.  
+
+<br>
+
+코드리뷰를 받고 보완할 부분이 있다면, 활용하면 좋습니다.  
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=TIVsQCtw9ME
 " target="_blank"><img src="http://img.youtube.com/vi/TIVsQCtw9ME/0.jpg" 
-alt="Before PR" width="400" height="300" /></a>
+alt="Before PR" width="450" height="400" /></a>
 
 ---
 
-## Before PR
+### Before PR
 
 커밋하고 푸쉬로 origin 브랜치에 반영되었는데 또 수정이 필요하다면?  
 커밋을 다시할 필요 없이 마지막 커밋을 `git push -f` 로 덮어 써줍니다.  
@@ -135,14 +139,23 @@ alt="PR" width="600" height="480" /></a>
 소스 최상단의 `MAINTAINERS` 참고하여 github 와 1 ~ 2 와 유사하지만, PR 과 코드 리뷰를 모두 담당자의 메일로 보냅니다.
 
 ```bash
-git send-email --smtp-pass="비밀번호" --to="메인테이너@이메일.주소" --cc="참조할@메일.주소들" --confirm=always -M -1
+git send-email --smtp-pass="비밀번호" \
+  --to="메인테이너@이메일.주소" \
+  --cc="참조할@메일.주소들" \
+  --confirm=always -M -1
 ```
 뒤에 카운트는 작업한 커밋 개수를 넣습니다.
 ```bash
-git send-email --to="Thomas Gleixner <tglx@linutronix.de>, Marc Zyngier <maz@kernel.org>" --cc="linux-kernel@vger.kernel.org, Austin Kim <austindh.kim@gmail.com>" --confirm=always -M -1
+git send-email \
+  --to="Thomas Gleixner <tglx@linutronix.de>, Marc Zyngier <maz@kernel.org>"
+  --cc="linux-kernel@vger.kernel.org, Austin Kim <austindh.kim@gmail.com>"
+  --confirm=always -M -1
 ```
 
-커밋 메세지를 작성할 때, 영어 작문 실력이 필요하지만, 우리에겐 구글 번역기가 있습니다.
+### Send Patch(Cont'd)
+
+커밋 메세지를 작성할 때, 영어 작문 실력이 필요하지만,  
+우리에겐 *구글 번역기*가 있습니다.
 
 ```patch
 Hello
@@ -183,7 +196,7 @@ index 939d21cd55c3..34a0cefff712 100644
 
 ---
 
-## Maintainer's Code Review
+### Maintainer's Code Review
 
 보낸 패치에 대해서 보완해야할 사항을 해당 서브시스템의 메인테이너가 말해줍니다.
 
@@ -241,7 +254,7 @@ Thanks,
 
 ---
 
-## Resend Patch V2
+### Resend Patch V2
 
 보완한 패치를 다시 보냅니다. 서브시스템의 메인테이너가 말해줍니다.
 
@@ -269,13 +282,9 @@ index d323b180b0f3..5db0230aa6b5 100644
 
 ---
 
-## Linux Kernel - Check Patch Merge
+### Linux Kernel - Check Patch Merge
 
-보낸 패치는 v6.0-rc1 에서 머지되었습니다.
-
-[GIT pull] irq/core for v6.0-rc1
-    - by Thomas Gleixner @ 2022-08-01 14:48 UTC [1%]
-
+보낸 패치는 v6.0-rc1 에서 `[GIT pull] irq/core for v6.0-rc1 - by Thomas Gleixner @ 2022-08-01 14:48 UTC [1%]` 머지되었습니다.
 ```patch
 The following commit has been merged into the irq/irqchip-next branch of irqchip:
 
@@ -318,7 +327,7 @@ index d323b18..5db0230 100644
 
 고생하셨습니다!
 
-## Contribution - Review(Cont'd)
+### Contribution - P.S.
 
 기억에 남는 몇 가지 패치 항목들입니다.
 
@@ -370,7 +379,7 @@ Julien Grall
 
 ---
 
-## Contribution - Review(Cont'd)
+### Contribution - P.S.(Cont'd)
 
 2. `Uftrace` 함수를 뛰어다니는 분기(try-catch 구현) longjmp() 가 컴파일러 최적화로 동작을 안하는 현상
 ```patch
@@ -394,3 +403,7 @@ so that it can't be optimized in clang.
 ```
 
 ---
+
+# 🤗
+
+진짜 끝 🤗
