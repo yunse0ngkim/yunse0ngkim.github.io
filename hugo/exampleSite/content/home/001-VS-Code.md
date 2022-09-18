@@ -14,36 +14,71 @@ weight = 10
 - 마이크로소프트 윈도우, macOS, 리눅스용으로 개발한 소스 코드 편집기이다.
 - Plugin 을 추가하여 풍부한 기능을 가진 IDE 로 사용할 수 있다.
 - VS Code 자체적으로 지원하는 Git 기능
-  - 철권 중급자 수준의 복잡한 커맨드를 기능 버튼으로 함축했습니다.
+  - 철권처럼 커맨드를 조합하여 사용하는 기능을 버튼 하나로 함축했습니다.
 - 추가적으로 Git 기능 외에도 SSH 또는 Live Share 원격 개발 환경 및 멀티 유저 편집이 가능합니다.
-
-<img src="0010-git-cheetsheet.png" alt="그림 2 : Git 커맨드 요약본" width=400>
-<img src="0010-vscode-git.png" alt="그림 1 : VS Code 에서 Git" width=400>
 
 ---
 
-## Visual Studio Code 플러그인 Git History
+## Git Command
+
+<img src="0010-git-cheetsheet.png" alt="그림 2 : Git 커맨드 요약본" width=300>
+
+---
+
+## VS Code 를 활용한 Git
+
+<img src="0010-vscode-git.png" alt="그림 1 : VS Code 에서 Git" width=300>
+
+---
+
+## Git History
 
 - History 그래프를 볼 때 유용한 Git History 플러그인
 - 커밋 히스토리를 보기 위한 `git log`, 특정 커밋의 시점으로 바꾸는 `git checkout` 에 대응하는 기능인데 직관적으로 보기 편합니다.
 
 <br>
 
-<iframe name="git-history" src="https://youtu.be/hW6mhIaZjgw" data-autoplay></iframe>
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=hW6mhIaZjgw
+" target="_blank"><img src="http://img.youtube.com/vi/hW6mhIaZjgw/0.jpg" 
+alt="Git History" width="400" height="300" /></a>
 
 ---
 
-## Visual Studio Code 플러그인 Git History
+## Git Lens
 
 - 코드 라인 & 파일 별 히스토리 추적에 용이한 Git Lens 플러그인
 
 <br>
 
-<iframe name="git-lens" src="https://youtu.be/WzIpMlS89HI" data-autoplay></iframe>
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=WzIpMlS89HI
+" target="_blank"><img src="http://img.youtube.com/vi/WzIpMlS89HI/0.jpg" 
+alt="Git Lens" width="400" height="300" /></a>
 
 ---
 
-## 빠르게 훑어 보는 오픈소스 컨트리뷰션(Uftrace) 루틴 1 - Issue Check Commit
+## CONTRIBUTING
+- 오픈소스 프로젝트
+  - Github, Gitlab, cgit 등의 git 기반 호스팅에 레포지토리들
+- 각 프로젝트에 Core, Util, Docs, unit-test, run-test, CI/CD 등에 기여합니다.
+  - 1. 게시판 형태의 플랫폼은 issue 를 확인
+  - 2. 메일링 기반은 메일링 등록
+- 각 프로젝트마다 wiki 나 최상단에 컨트리뷰션 가이드 문서가 있습니다.
+  - [pytorch - CONTRIBUTING.md](https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md)
+  - [ebpf-for-windows - CONTRIBUTING.md](https://github.com/microsoft/ebpf-for-windows/blob/main/CONTRIBUTING.md)
+  - [Linux Kernel - Patch submission notes](https://www.kernel.org/doc/html/latest/process/maintainer-tip.html?highlight=x86#patch-submission-notes)
+
+---
+
+## Contribution - Review
+
+국제적으로 메일링 기록이 남기 때문에,
+메인테이너들이 사소한 패치라도 신중하게 리뷰해줍니다.
+특히, 컴파일된 코드 관련해서는 패치를 보낸 기여자를 설득하기 위해서
+어려운 동작을 자세히 설명해주어 많은 도움이 되었습니다.
+
+---
+
+## Github Uftrace - Commit
 
 코드 정적 분석기로 나온 항목 중에 Null 관련 보안 사항이 있었습니다.
 ```patch
@@ -59,45 +94,50 @@ cmds/graph.c:282: error: Null Dereference
 
 깃허브 이슈로 등록한 뒤에 해당 사항을 보완하는 작업을 진행합니다.
 
-<iframe name="commit" src="https://youtu.be/JDUcRbE1AsU" data-autoplay></iframe>
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=JDUcRbE1AsU
+" target="_blank"><img src="http://img.youtube.com/vi/JDUcRbE1AsU/0.jpg" 
+alt="Commit" width="400" height="300" /></a>
 
 ---
 
-## 빠르게 훑어 보는 Github 오픈소스(Uftrace) 컨트리뷰션 루틴 2 - Before PR
+## Before PR
 
-커밋을 하고 난 뒤에 `마지막 커밋 실행 취소`로 쉽게 스테이징 단계로 되돌아 올 수 있습니다.
+커밋을 하고 난 뒤에 `마지막 커밋 실행 취소`로 쉽게 스테이징 단계로 되돌아 올 수 있습니다.  
+코드리뷰를 받고 보완할 부분이 있다면, 활용하면 좋습니다.
 
-<iframe name="back-commit" src="https://youtu.be/TIVsQCtw9ME" data-autoplay></iframe>
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=TIVsQCtw9ME
+" target="_blank"><img src="http://img.youtube.com/vi/TIVsQCtw9ME/0.jpg" 
+alt="Before PR" width="400" height="300" /></a>
 
 ---
 
-## 빠르게 훑어 보는 Github 오픈소스(Uftrace) 컨트리뷰션 루틴 2 - Before PR
+## Before PR
 
 커밋하고 푸쉬로 origin 브랜치에 반영되었는데 또 수정이 필요하다면?  
 커밋을 다시할 필요 없이 마지막 커밋을 `git push -f` 로 덮어 써줍니다.  
 
-<img src="0022-commit-rollback-update-origin-branch.png" alt="Fcommit-rollback-update-origin-branch.png">
+<img src="0022-commit-rollback-update-origin-branch.png" alt="commit-rollback-update-origin-branch.png">
 
 ---
 
-## 빠르게 훑어 보는 Github 오픈소스(Uftrace) 컨트리뷰션 루틴 3 - PR
+## PR
 
-fork 한 브랜치(Downstream)가 Upstream 에 머지할 수 있도록 PR 을 작성하는 단계입니다.
+fork 한 브랜치(Downstream)를 origin(Upstream)에 머지할 수 있도록 PR 을 작성하는 단계입니다.
 
-<iframe name="PR" src="https://youtu.be/wr6dkL0FGPA" data-autoplay></iframe>
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=wr6dkL0FGPA
+" target="_blank"><img src="http://img.youtube.com/vi/wr6dkL0FGPA/0.jpg" 
+alt="PR" width="600" height="480" /></a>
 
 ---
 
-## 빠르게 훑어 보는 메일링 리스트 기반 오픈소스(Linux Kernel) 컨트리뷰션 루틴 A - Patch
+## Linux Kernel - Send Patch
 
-github 와 1 ~ 2 와 유사하지만, PR 과 코드 리뷰를 모두 메일로 보냅니다.
+소스 최상단의 `MAINTAINERS` 참고하여 github 와 1 ~ 2 와 유사하지만, PR 과 코드 리뷰를 모두 담당자의 메일로 보냅니다.
 
 ```bash
 git send-email --smtp-pass="비밀번호" --to="메인테이너@이메일.주소" --cc="참조할@메일.주소들" --confirm=always -M -1
 ```
-뒤에 카운트는 작업한 커밋 개수를 넣습니다. 
-
-예시
+뒤에 카운트는 작업한 커밋 개수를 넣습니다.
 ```bash
 git send-email --to="Thomas Gleixner <tglx@linutronix.de>, Marc Zyngier <maz@kernel.org>" --cc="linux-kernel@vger.kernel.org, Austin Kim <austindh.kim@gmail.com>" --confirm=always -M -1
 ```
@@ -143,7 +183,7 @@ index 939d21cd55c3..34a0cefff712 100644
 
 ---
 
-## 빠르게 훑어 보는 메일링 리스트 기반 오픈소스(Linux Kernel) 컨트리뷰션 루틴 B - Code Review
+## Maintainer's Code Review
 
 보낸 패치에 대해서 보완해야할 사항을 해당 서브시스템의 메인테이너가 말해줍니다.
 
@@ -201,14 +241,13 @@ Thanks,
 
 ---
 
-## 빠르게 훑어 보는 메일링 리스트 기반 오픈소스(Linux Kernel) 컨트리뷰션 루틴 B - Resend Version
+## Resend Patch V2
 
 보완한 패치를 다시 보냅니다. 서브시스템의 메인테이너가 말해줍니다.
 
 ```patch
 Refactor for loop to macro for_each_action_of_desc
 
-Signed-off-by: Paran Lee <p4ranlee@gmail.com>
 ---
  kernel/irq/irqdesc.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
@@ -230,9 +269,9 @@ index d323b180b0f3..5db0230aa6b5 100644
 
 ---
 
-## 빠르게 훑어 보는 메일링 리스트 기반 오픈소스(Linux Kernel) 컨트리뷰션 루틴 B - Merged
+## Linux Kernel - Check Patch Merge
 
-보낸 패치가 v6.0-rc1 에서 머지되었습니다.
+보낸 패치는 v6.0-rc1 에서 머지되었습니다.
 
 [GIT pull] irq/core for v6.0-rc1
     - by Thomas Gleixner @ 2022-08-01 14:48 UTC [1%]
@@ -278,3 +317,80 @@ index d323b18..5db0230 100644
 # 🤗
 
 고생하셨습니다!
+
+## Contribution - Review(Cont'd)
+
+기억에 남는 몇 가지 패치 항목들입니다.
+
+1. `Xen Hypervisor` 암묵적인 casting 으로 실제 코드가 길어지는 현상
+```patch
+From: Julien Grall <julien@xen.org>
+
+Well... I don't think the one less operation is because of introduction 
+of the local variable (see more below).
+
+> 
+> (1) before clean up
+> 
+> 0000000000001bb4 <p2m_set_entry>:
+>      while ( nr )
+>      1bb4:       b40005e2        cbz     x2, 1c70 <p2m_set_entry+0xbc>
+> {
+>      ...
+>          if ( rc )
+>      1c1c:       350002e0        cbnz    w0, 1c78 <p2m_set_entry+0xc4>
+>          sgfn = gfn_add(sgfn, (1 << order));
+
+1 << order is a 32-bit value but the second parameter is a 64-bit value 
+(assuming arm64). So...
+
+>      1c20:       1ad32373        lsl     w19, w27, w19   // <<< CES works
+>      1c24:       93407e73        sxtw    x19, w19        // <<< well!
+
+... this instruction is extending the 32-bit value to 64-bit value.
+
+>      return _gfn(gfn_x(gfn) + i);
+>      1c28:       8b1302d6        add     x22, x22, x19
+>      return _mfn(mfn_x(mfn) + i);
+>      1c2c:       8b130281        add     x1, x20, x19
+>      1c30:       b100069f        cmn     x20, #0x1
+>      1c34:       9a941034        csel    x20, x1, x20, ne  // ne = any
+>      while ( nr )
+>      1c38:       eb1302b5        subs    x21, x21, x19
+>      1c3c:       540001e0        b.eq    1c78 <p2m_set_entry+0xc4>  // b.none
+> 
+> (2) Using again mask variable. mask = 1UL << order
+> code show me   sxtw    x19, w19    operation disappeared.
+This code is not only using a local variable but also using "1UL". So, I 
+suspect that if you were using 1 << order, the instruction would re-appear.
+
+Cheers,
+Julien Grall
+```
+
+---
+
+## Contribution - Review(Cont'd)
+
+2. `Uftrace` 함수를 뛰어다니는 분기(try-catch 구현) longjmp() 가 컴파일러 최적화로 동작을 안하는 현상
+```patch
+diff --git a/tests/s-longjmp.c b/tests/s-longjmp.c
+index 487e9264..64fc7c38 100644
+--- a/tests/s-longjmp.c
++++ b/tests/s-longjmp.c
+@@ -8,6 +8,9 @@ int foo(void)
+        return 0;
+ }
+
++#if __clang__
++__attribute__((optnone))
++#endif
+ int bar(void)
+ {
+        return -1;
+
+Another solution is to make bar function has more contents
+so that it can't be optimized in clang.
+```
+
+---
